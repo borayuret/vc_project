@@ -32,3 +32,7 @@ PGAdmin Kuruyoruz
 
 docker network create pg-network
 
+2 - postgres18'i de bu network'e bağla.
+
+docker network connect pg-network postgres18
+
