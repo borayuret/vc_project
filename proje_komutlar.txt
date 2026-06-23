@@ -1,6 +1,21 @@
 Docker üzerinde PostgreSQL 18 Çalıştırma
 --------------------------------------------
 
+Docker komutları
+----------------------
+
+docker images
+docker ps (çalışan)
+docker ps -a (çalışan çalışmayan hepsi)
+docker build
+docker run
+docker exec -it (çalışan docker'a bağlanma)
+docker rm (container silme)
+docker rmi (image silme)
+
+
+docker_test diye bir dizin oluştur. İçinde Dockerfile oluştur.
+
 1 - Dockerfile yaz
 
 FROM postgres:18-alpine
@@ -35,4 +50,21 @@ docker network create pg-network
 2 - postgres18'i de bu network'e bağla.
 
 docker network connect pg-network postgres18
+
+3 - pgadmin diye bir altdizin oluşturup, o dizin içinde Dockerfile oluşturalım.
+
+FROM dpage/pgadmin4:latest
+
+ENV PGADMIN_DEFAULT_EMAIL=admin@admin.com
+ENV PGADMIN_DEFAULT_PASSWORD=admin
+
+EXPOSE 80
+
+4 - Dockerfile build et.
+
+docker build -t pgadmin .
+
+5 - Docker pgadmin çalıştır
+
+docker run -d --name pgadmin --network pg-network -p 5050:80 -v pgadmin_data:/var/lib/pgadmin pgadmin
 
