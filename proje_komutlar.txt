@@ -70,3 +70,5 @@ docker run -d --name pgadmin --network pg-network -p 5050:80 -v pgadmin_data:/va
 
 6 - http://localhost:5050   adresinden bağlanın.
 
+7 - pgadmin'i postgres'e bağlarken connection bölümünde hostname'e postgresql'in coniner adı yazılacak.
+
