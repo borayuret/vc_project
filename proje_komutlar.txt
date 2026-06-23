@@ -1,0 +1,25 @@
+Docker üzerinde PostgreSQL 18 Çalıştırma
+--------------------------------------------
+
+1 - Dockerfile yaz
+
+FROM postgres:18-alpine
+
+ENV POSTGRES_DB=testdb
+ENV POSTGRES_USER=postgres
+ENV POSTGRES_PASSWORD=postgres
+
+EXPOSE 5432
+
+
+2 - Dockerfile build et
+
+docker build -t postgres18 .
+
+3 - Docker image'ı çalıştır.
+
+docker run -d --name postgres18 -p 5432:5432 -v postgres18_data:/var/lib/postgresql postgres18
+
+4 - Docker'da çalışan postgresql'e bağlan
+
+docker exec -it postgres18 psql -U postgres -d testdb
