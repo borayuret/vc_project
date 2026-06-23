@@ -23,3 +23,12 @@ docker run -d --name postgres18 -p 5432:5432 -v postgres18_data:/var/lib/postgre
 4 - Docker'da çalışan postgresql'e bağlan
 
 docker exec -it postgres18 psql -U postgres -d testdb
+
+
+PGAdmin Kuruyoruz
+------------------------------------------------
+
+1 - Docker network oluştur
+
+docker network create pg-network
+
