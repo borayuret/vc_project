@@ -148,3 +148,12 @@ with app.app_context():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
+'''
+Örnek personel ekleme
+---------------------------
+curl -X POST http://127.0.0.1:5000/personeller ^
+  -H "Content-Type: application/json" ^
+  -d "{\"ad\":\"Ahmet\",\"soyad\":\"Yilmaz\",\"mail_adresi\":\"ahmet@example.com\",\"telefon\":\"05551234567\"}"
+'''
