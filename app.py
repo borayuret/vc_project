@@ -9,7 +9,7 @@ app = Flask(__name__)
 # Format:
 # postgresql+psycopg://kullanici:sifre@host:port/veritabani
 app.config["SQLALCHEMY_DATABASE_URI"] = (
-    "postgresql+psycopg://postgres:postgres@localhost:5432/testdb"
+    "postgresql+psycopg://postgres:postgres@postgres18:5432/testdb"
 )
 
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
@@ -147,13 +147,4 @@ with app.app_context():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
-
-
-'''
-Örnek personel ekleme
----------------------------
-curl -X POST http://127.0.0.1:5000/personeller ^
-  -H "Content-Type: application/json" ^
-  -d "{\"ad\":\"Ahmet\",\"soyad\":\"Yilmaz\",\"mail_adresi\":\"ahmet@example.com\",\"telefon\":\"05551234567\"}"
-'''
+    app.run(host="0.0.0.0", port=5000, debug=True)
